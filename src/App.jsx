@@ -8,7 +8,7 @@ function App() {
     <HashRouter>
       <div
         style={{
-          maxWidth: "800px",
+          maxWidth: "1400px",
           margin: "0 auto",
           fontFamily: "Arial, sans-serif",
         }}
