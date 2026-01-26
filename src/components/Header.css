@@ -67,9 +67,10 @@
   white-space: nowrap;
 
   /* Unified Styling with Nav Links */
-  /* Layered Background: Top (Gradient) | Bottom (White) */
+  /* Layered Background: Top (Gradient) | Bottom (Dark) */
   background-image:
-    linear-gradient(90deg, #3b82f6, #2dd4bf), linear-gradient(#ffffff, #ffffff);
+    linear-gradient(90deg, #3b82f6, #2dd4bf),
+    linear-gradient(var(--text-main), var(--text-main));
 
   background-size:
     0% 100%,
@@ -99,7 +100,8 @@
   filter: none;
   /* Ensure image is preserved to prevent global override */
   background-image:
-    linear-gradient(90deg, #3b82f6, #2dd4bf), linear-gradient(#ffffff, #ffffff);
+    linear-gradient(90deg, #3b82f6, #2dd4bf),
+    linear-gradient(var(--text-main), var(--text-main));
 }
 
 .nav {
@@ -115,7 +117,8 @@
 
   /* Unified Styling */
   background-image:
-    linear-gradient(90deg, #3b82f6, #2dd4bf), linear-gradient(#ffffff, #ffffff);
+    linear-gradient(90deg, #3b82f6, #2dd4bf),
+    linear-gradient(var(--text-main), var(--text-main));
 
   background-size:
     0% 100%,
@@ -140,7 +143,8 @@
   filter: none;
   /* Specificity fix: Re-declare partial background to win against global a:hover */
   background-image:
-    linear-gradient(90deg, #3b82f6, #2dd4bf), linear-gradient(#ffffff, #ffffff);
+    linear-gradient(90deg, #3b82f6, #2dd4bf),
+    linear-gradient(var(--text-main), var(--text-main));
 
   -webkit-background-clip: text;
   background-clip: text;

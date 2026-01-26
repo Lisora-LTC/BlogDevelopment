@@ -1,39 +1,34 @@
 :root {
   /* 
-   * Dark Theme Configuration
-   * "Deep Blue" Aesthetic
+   * Light Theme Configuration (Trial)
    */
-  --bg-main: #0b0e14; /* Deep dark blue */
-  --bg-secondary: #151b25; /* Lighter blue-grey for elements */
-  --bg-glass: rgba(15, 23, 42, 0.6); /* Glass background with blue tint */
+  --bg-main: #f8fafc; /* Light Grey/White */
+  --bg-secondary: #ffffff; /* Pure White */
+  --bg-glass: rgba(255, 255, 255, 0.8); /* White Glass */
 
   --primary: #3b82f6; /* Bright Blue */
-  --primary-gradient: linear-gradient(
-    135deg,
-    #3b82f6 0%,
-    #2dd4bf 100%
-  ); /* Blue to Teal/Cyan */
+  --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #2dd4bf 100%);
 
-  --text-main: #e2e8f0; /* Off-white for better readability */
-  --text-secondary: #94a3b8; /* Slate grey */
-  --text-muted: #64748b; /* Muted slate */
+  --text-main: #0f172a; /* Dark Slate Blue (Main Text) */
+  --text-secondary: #475569; /* Slate Grey */
+  --text-muted: #94a3b8; /* Light Slate */
 
-  --border-color: rgba(148, 163, 184, 0.1);
-  --glass-border: rgba(148, 163, 184, 0.05);
+  --border-color: rgba(148, 163, 184, 0.2);
+  --glass-border: rgba(148, 163, 184, 0.1);
 
-  --shadow-lg: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
-  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.3);
+  --shadow-lg: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.15);
 }
 
 /* Content Container for Readability */
 .content-card {
-  background-color: rgba(30, 41, 59, 0.5); /* Semi-transparent slate */
+  background-color: rgba(255, 255, 255, 0.7); /* White semi-transparent */
   border-radius: 16px;
   padding: 40px;
   box-shadow:
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  backdrop-filter: blur(8px); /* Optional: adds to the glass effect */
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  backdrop-filter: blur(8px);
 }
 
 body {
