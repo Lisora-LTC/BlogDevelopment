@@ -26,7 +26,7 @@ function PostPage() {
       >
         ← 返回首页
       </Link>
-      <article>
+      <article className="content-card">
         <h1 style={{ fontSize: "2.5rem", marginBottom: "10px" }}>
           {post.title}
         </h1>
