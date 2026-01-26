@@ -6,15 +6,9 @@ import PostPage from "./pages/PostPage";
 function App() {
   return (
     <HashRouter>
-      <div
-        style={{
-          maxWidth: "1400px",
-          margin: "0 auto",
-          fontFamily: "Arial, sans-serif",
-        }}
-      >
+      <div className="app-container">
         <Header />
-        <main style={{ padding: "20px 0" }}>
+        <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/post/:id" element={<PostPage />} />

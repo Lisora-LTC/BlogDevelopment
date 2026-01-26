@@ -12,21 +12,38 @@ function PostPage() {
   }
 
   return (
-    <div>
+    <div style={{ maxWidth: "800px", margin: "0 auto", paddingTop: "20px" }}>
       <Link
         to="/"
-        style={{ display: "inline-block", marginBottom: "20px", color: "#666" }}
+        style={{
+          display: "inline-block",
+          marginBottom: "30px",
+          color: "var(--text-secondary)",
+          textDecoration: "none",
+        }}
+        onMouseOver={(e) => (e.target.style.color = "var(--primary)")}
+        onMouseOut={(e) => (e.target.style.color = "var(--text-secondary)")}
       >
         ← 返回首页
       </Link>
       <article>
-        <h1>{post.title}</h1>
-        <p style={{ color: "#999" }}>{post.date}</p>
+        <h1 style={{ fontSize: "2.5rem", marginBottom: "10px" }}>
+          {post.title}
+        </h1>
+        <p
+          style={{
+            color: "var(--text-muted)",
+            marginBottom: "40px",
+            fontSize: "0.9rem",
+          }}
+        >
+          {post.date}
+        </p>
         <div
           style={{
-            lineHeight: "1.6",
-            marginTop: "20px",
-            fontFamily: "sans-serif",
+            lineHeight: "1.8",
+            fontSize: "1.1rem",
+            color: "var(--text-main)",
           }}
         >
           <ReactMarkdown>{post.content}</ReactMarkdown>

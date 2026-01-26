@@ -1,70 +1,68 @@
 import { Link } from "react-router-dom";
+import React from "react";
+import "./Header.css";
 
 function Header() {
+  const [isScrolled, setIsScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      // Toggle class based on scroll position (e.g., > 50px)
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header
-      style={{
-        /* 布局设置 */
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
+    <>
+      <div className={`menu-bg ${isScrolled ? "visible" : ""}`}></div>
+      <header className={`header ${isScrolled ? "scrolled" : ""}`}>
+        {/* Left Container: Logo + Navigation */}
+        <div className="header-left">
+          {/* Logo */}
+          <div className="logo">
+            <Link to="/">Lisora</Link>
+          </div>
 
-        /* 尺寸与间距 */
-        padding: "20px 40px" /* 上下20px, 左右40px，让头部宽敞一点 */,
-        marginBottom: "40px",
+          {/* Navigation */}
+          <nav className="nav">
+            <Link to="/" className="nav-link">
+              About
+            </Link>
+            <Link to="/" className="nav-link">
+              Cool Stuff
+            </Link>
+            <Link to="/" className="nav-link">
+              Designs
+            </Link>
+          </nav>
+        </div>
 
-        /* 视觉风格：清爽蓝 */
-        /* 使用透明背景，配合底部的细线条 */
-        borderBottom: "2px solid var(--accent-light)",
-        color: "var(--primary)",
-
-        /* 简单的毛玻璃效果 (可选，增加了现代感) */
-        backdropFilter: "blur(10px)",
-        backgroundColor: "rgba(247, 251, 252, 0.8)", // --bg-main 的半透明版
-      }}
-    >
-      {/* 左侧：Logo / 博客名称 */}
-      <div
-        style={{ fontSize: "24px", fontWeight: "bold", letterSpacing: "1px" }}
-      >
-        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-          My Blog
-        </Link>
-      </div>
-
-      {/* 右侧：导航链接 */}
-      <nav style={{ display: "flex", gap: "20px" }}>
-        <Link
-          to="/"
-          style={{
-            textDecoration: "none",
-            color: "var(--text-main)", // 导航项平时用深灰色
-            fontWeight: "500",
-            transition: "color 0.3s", // 加个平滑过渡
-          }}
-          // 为了演示简单的悬停变色，这里使用了内联样式的小技巧
-          // 实际项目中通常使用 CSS 类
-          onMouseOver={(e) => (e.target.style.color = "var(--primary)")}
-          onMouseOut={(e) => (e.target.style.color = "var(--text-main)")}
-        >
-          首页
-        </Link>
-        <a
-          href="https://github.com"
-          target="_blank"
-          rel="noreferrer"
-          style={{
-            textDecoration: "none",
-            color: "var(--text-main)",
-            fontWeight: "500",
-          }}
-          onMouseOver={(e) => (e.target.style.color = "var(--primary)")}
-          onMouseOut={(e) => (e.target.style.color = "var(--text-main)")}
-        >
-          GitHub
-        </a>
-      </nav>
-    </header>
+        {/* Right Container: GitHub Icon */}
+        <div className="header-right">
+          <a
+            href="https://github.com/Lisora-LTC"
+            target="_blank"
+            rel="noreferrer"
+            className="nav-link github-link"
+            aria-label="GitHub"
+          >
+            {/* Svg Icon for GitHub */}
+            <svg
+              height="24"
+              width="24"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              style={{ display: "block" }}
+            >
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </a>
+        </div>
+      </header>
+    </>
   );
 }
 

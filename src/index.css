@@ -1,20 +1,33 @@
 :root {
   /* 
-   * 清爽蓝配色系统 
-   * 根据用户需求定义四大基础色
+   * Dark Theme Configuration
+   * "Deep Blue" Aesthetic
    */
-  --bg-main: #f7fbfc; /* 最浅蓝：用于全屏背景 */
-  --bg-secondary: #d6e6f2; /* 浅灰蓝：用于次级背景或装饰块 */
-  --accent-light: #b9d7ea; /* 中浅蓝：用于边框、分割线 */
-  --primary: #769fcd; /* 深蓝：核心主色 (标题、按钮、强调) */
+  --bg-main: #0b0e14; /* Deep dark blue */
+  --bg-secondary: #151b25; /* Lighter blue-grey for elements */
+  --bg-glass: rgba(15, 23, 42, 0.6); /* Glass background with blue tint */
 
-  --text-main: #2c3e50; /* 深灰蓝：配合浅色背景的正文颜色 (确保可读性) */
+  --primary: #3b82f6; /* Bright Blue */
+  --primary-gradient: linear-gradient(
+    135deg,
+    #3b82f6 0%,
+    #2dd4bf 100%
+  ); /* Blue to Teal/Cyan */
+
+  --text-main: #f1f5f9; /* White-ish blue */
+  --text-secondary: #94a3b8; /* Slate grey */
+  --text-muted: #64748b; /* Muted slate */
+
+  --border-color: rgba(148, 163, 184, 0.1);
+  --glass-border: rgba(148, 163, 184, 0.05);
+
+  --shadow-lg: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.3);
 }
 
 body {
   margin: 0;
   padding: 0;
-  /* 使用最浅的蓝色作为全局背景，奠定清爽基调 */
   background-color: var(--bg-main);
   color: var(--text-main);
   font-family:
@@ -25,66 +38,53 @@ body {
     Roboto,
     sans-serif;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-secondary);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Utilities */
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Typography Overrides */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  color: var(--text-main);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
 code {
   font-family:
     source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-
-/* =========================================
-   组件样式: 首页文章列表
-   ========================================= */
-
-.post-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 0 20px; /* 移动端留白 */
-}
-
-.post-card {
-  background-color: #ffffff; /* 卡片背景纯白，突出内容 */
-  border: 1px solid var(--accent-light);
-  border-radius: 12px; /* 柔和的圆角 */
-  padding: 24px;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    border-color 0.2s;
-
-  /* 初始状态：无阴影或极淡阴影 */
-  box-shadow: 0 2px 4px rgba(118, 159, 205, 0.05);
-}
-
-/* 交互效果：鼠标悬停时上浮 */
-.post-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--primary); /* 边框变深色 */
-  box-shadow: 0 12px 20px rgba(118, 159, 205, 0.15); /* 投影带一点点蓝色 */
-}
-
-.post-title {
-  margin: 0 0 10px 0;
-  font-size: 1.4rem;
-}
-
-/* 标题链接 */
-.post-title a {
-  text-decoration: none;
-  color: var(--primary);
-  font-weight: 600;
-}
-
-.post-date {
-  font-size: 0.85rem;
-  color: #7f99b3; /* 中性偏蓝的灰色 */
-  margin-bottom: 12px;
-}
-
-.post-excerpt {
-  color: var(--text-main);
-  font-size: 1rem;
-  line-height: 1.6;
-  opacity: 0.9;
 }

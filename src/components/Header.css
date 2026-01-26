@@ -1,0 +1,186 @@
+/* Header Layout */
+.menu-bg {
+  opacity: 0;
+  z-index: 50;
+  width: 100vw;
+  height: 170px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  /* Updated to "Stage Light" Blue (Primary) with low opacity */
+  background: linear-gradient(
+    180deg,
+    rgba(59, 130, 246, 0.15) 0%,
+    rgba(59, 130, 246, 0) 100%
+  );
+  transition: opacity 0.5s ease-in-out;
+}
+.menu-bg.visible {
+  opacity: 1;
+}
+
+.header {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px; /* Specific gap from without_a */
+
+  /* Fixed Position (Follows scroll) */
+  position: fixed;
+  width: 80%;
+  height: 60px;
+  top: 60px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+
+  background: none;
+  border-bottom: 1px solid #fff;
+
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  transition: border-bottom 0.5s ease-in-out;
+}
+
+/* Scrolled State: Remove Border */
+.header.scrolled {
+  background: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0);
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+/* Logo Styling with Fill Effect */
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+
+  /* Unified Styling with Nav Links */
+  /* Layered Background: Top (Gradient) | Bottom (White) */
+  background-image:
+    linear-gradient(90deg, #3b82f6, #2dd4bf), linear-gradient(#ffffff, #ffffff);
+
+  background-size:
+    0% 100%,
+    100% 100%;
+  background-repeat: no-repeat;
+  background-position: left center;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  transition: background-size 0.4s ease-out;
+  position: relative; /* For underline positioning if needed, though mainly for nav-links */
+}
+
+.logo a {
+  color: inherit;
+  -webkit-text-fill-color: inherit;
+}
+
+.logo:hover {
+  background-size:
+    100% 100%,
+    100% 100%;
+  filter: none;
+  /* Ensure image is preserved to prevent global override */
+  background-image:
+    linear-gradient(90deg, #3b82f6, #2dd4bf), linear-gradient(#ffffff, #ffffff);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+/* Nav Link Text Fill Animation */
+.nav-link {
+  font-weight: 500;
+  text-decoration: none;
+
+  /* Unified Styling */
+  background-image:
+    linear-gradient(90deg, #3b82f6, #2dd4bf), linear-gradient(#ffffff, #ffffff);
+
+  background-size:
+    0% 100%,
+    100% 100%;
+  background-repeat: no-repeat;
+  background-position: left center;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  transition: background-size 0.4s ease-out;
+  position: relative; /* Essential for ::after underline */
+}
+
+.nav-link:hover {
+  background-size:
+    100% 100%,
+    100% 100%;
+  filter: none;
+  /* Specificity fix: Re-declare partial background to win against global a:hover */
+  background-image:
+    linear-gradient(90deg, #3b82f6, #2dd4bf), linear-gradient(#ffffff, #ffffff);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-link.active {
+  font-weight: 800;
+  background-size:
+    100% 100%,
+    100% 100%;
+}
+
+/* GitHub Link (SVG) */
+.github-link {
+  display: flex;
+  align-items: center;
+  background: none;
+  -webkit-text-fill-color: initial;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.github-link:hover {
+  color: var(--text-main);
+  filter: none;
+}
+
+/* Underline Animation for Nav Links */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px; /* Adjust distance from text */
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6, #2dd4bf);
+  transition: width 0.3s ease-out;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
