@@ -5,16 +5,13 @@ import "./Home.css";
 
 function Home() {
   const posts = getAllPosts().slice(0, 3); // Get top 3 latest posts
+  const latestProject = selectedProjects[0]; // Get the first project for Hero
 
   return (
     <div className="home-container">
       {/* Hero Section */}
       <section className="hero-section">
-        {/* 
-           Aurora Background Wrapper 
-           This element will break out of the .home-container max-width 
-           to span the FULL viewport width (100vw).
-        */}
+        {/* Aurora Background Wrapper */}
         <div className="hero-background-interactive">
           <div className="aurora-blob blob-1"></div>
           <div className="aurora-blob blob-2"></div>
@@ -43,13 +40,20 @@ function Home() {
 
         <div className="hero-visual">
           <div className="featured-label">LATEST PROJECT</div>
-          {/* Featured Card */}
-          <div className="featured-card">
+          {/* Featured Card - Now Dynamic Link */}
+          <a
+            href={latestProject?.link || "#"}
+            target="_blank"
+            rel="noreferrer"
+            className="featured-card"
+          >
             <div
+              className="featured-visual-inner"
               style={{
                 width: "100%",
                 height: "100%",
                 background:
+                  latestProject?.image ||
                   "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)",
                 display: "flex",
                 alignItems: "center",
@@ -58,12 +62,26 @@ function Home() {
                 fontWeight: "bold",
               }}
             >
-              Featured Visual
+              {/* If no image string, show text. If image string is 'linear-gradient...', text can overlay? 
+                  With the new structure, assume 'image' is a CSS background value or URL. 
+                  Let's just show title if it's a gradient, or nothing if it's a real image URL. 
+                  For now, mimic previous text logic but use project title.
+              */}
+              <span
+                style={{
+                  padding: "2rem",
+                  textAlign: "center",
+                  fontSize: "1.5rem",
+                  opacity: 0.8,
+                }}
+              >
+                {latestProject?.title || "Featured"}
+              </span>
             </div>
-          </div>
+          </a>
         </div>
 
-        {/* Scroll Down Indicator - Pinned to Bottom */}
+        {/* Scroll Down Indicator */}
         <div className="scroll-indicator">
           <div className="mouse-icon">
             <div className="mouse-wheel"></div>
