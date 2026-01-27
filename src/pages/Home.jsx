@@ -1,25 +1,50 @@
 import { Link } from "react-router-dom";
 import { getAllPosts } from "../utils/postLoader";
+import { selectedProjects } from "../data/projects";
 import "./Home.css";
 
 function Home() {
-  const posts = getAllPosts();
+  const posts = getAllPosts().slice(0, 3); // Get top 3 latest posts
 
   return (
     <div className="home-container">
       {/* Hero Section */}
       <section className="hero-section">
+        {/* 
+           Aurora Background Wrapper 
+           This element will break out of the .home-container max-width 
+           to span the FULL viewport width (100vw).
+        */}
+        <div className="hero-background-interactive">
+          <div className="aurora-blob blob-1"></div>
+          <div className="aurora-blob blob-2"></div>
+          <div className="aurora-blob blob-3"></div>
+        </div>
+
         <div className="hero-text">
+          <div className="hero-avatar-wrapper">
+            <a
+              href="https://github.com/hrck9"
+              target="_blank"
+              rel="noreferrer"
+              className="hero-avatar"
+            >
+              {/* Placeholder for Avatar */}
+              <div className="avatar-placeholder">ME</div>
+            </a>
+          </div>
           <div className="hero-slogan">
-            嘿嘿 <em>...</em>,<span>哭哭喵...</span>
+            <em>Lisora</em>
+            <br />
+            做梦的地方
+            <span>何意味...</span>
           </div>
         </div>
 
         <div className="hero-visual">
-          <div className="featured-label">/// LATEST PROJECT</div>
-          {/* Featured Card (Placeholder or latest post) */}
+          <div className="featured-label">LATEST PROJECT</div>
+          {/* Featured Card */}
           <div className="featured-card">
-            {/* Using a gradient or image here. For now, styled div. */}
             <div
               style={{
                 width: "100%",
@@ -37,48 +62,118 @@ function Home() {
             </div>
           </div>
         </div>
+
+        {/* Scroll Down Indicator - Pinned to Bottom */}
+        <div className="scroll-indicator">
+          <div className="mouse-icon">
+            <div className="mouse-wheel"></div>
+          </div>
+          <div className="arrow-down"></div>
+        </div>
       </section>
 
-      {/* Post List Section */}
-      <section className="posts-section">
-        <div className="post-list">
-          {posts.map((post, index) => (
-            <article key={post.id} className="post-list-item">
+      {/* Main Divider - Outside Hero */}
+      <div className="section-divider"></div>
+
+      {/* Selected Projects Section */}
+      <section className="section-container projects-section">
+        <h2 className="section-title">Recent Projects</h2>
+        <div className="content-list">
+          {selectedProjects.map((project, index) => (
+            <div key={project.id} className="list-item project-item">
               {/* Index */}
-              <div className="post-index">
+              <div className="item-index">
                 {String(index + 1).padStart(2, "0")}
               </div>
 
-              {/* Info */}
-              <div className="post-info">
-                <h2>
-                  <Link to={`/post/${post.id}`}>{post.title}</Link>
+              {/* Info (Left) */}
+              <div className="item-info">
+                <h2 className="item-title-wrapper">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="item-title-link"
+                  >
+                    <span className="item-title">{project.title}</span>
+                  </a>
                 </h2>
-                <div className="post-description">
-                  {post.content.substring(0, 120)}...
-                </div>
-
-                <div className="post-meta">
+                <div className="item-description">{project.description}</div>
+                <div className="item-meta">
                   <div className="meta-item">
-                    <span>Date</span>
+                    <span>Tech</span>
                     <br />
-                    {post.date}
-                  </div>
-                  <div className="meta-item">
-                    <span>Type</span>
-                    <br />
-                    Article
+                    {project.tags.join(" / ")}
                   </div>
                 </div>
               </div>
 
               {/* Thumbnail (Right) */}
-              <div className="post-thumbnail">
-                {/* Placeholder Image */}
-                <div style={{ color: "var(--text-muted)" }}>No Image</div>
-              </div>
-            </article>
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noreferrer"
+                className="item-thumbnail project-thumbnail"
+              >
+                <div
+                  className="thumbnail-inner"
+                  style={{ background: project.image }}
+                >
+                  <span className="view-hint">View</span>
+                </div>
+              </a>
+            </div>
           ))}
+        </div>
+      </section>
+
+      <div className="section-divider"></div>
+
+      {/* Recent Blogs Section */}
+      <section className="section-container posts-section">
+        <h2 className="section-title">Recent Blogs</h2>
+        <div className="content-list">
+          {posts.map((post, index) => {
+            const hasImage = post.image;
+
+            return (
+              <article
+                key={post.id}
+                className={`list-item post-item ${!hasImage ? "no-image" : ""}`}
+              >
+                {/* Index */}
+                <div className="item-index">
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+
+                {/* Info (Left) */}
+                <div className="item-info">
+                  <h2 className="item-title-wrapper">
+                    <Link to={`/post/${post.id}`} className="item-title-link">
+                      <span className="item-title">{post.title}</span>
+                    </Link>
+                    {/* Inline Date */}
+                    <span className="item-date-inline">{post.date}</span>
+                  </h2>
+                  <div className="item-description">
+                    {post.content.substring(0, 150)}...
+                  </div>
+                </div>
+
+                {/* Thumbnail */}
+                {hasImage && (
+                  <Link
+                    to={`/post/${post.id}`}
+                    className="item-thumbnail post-thumbnail"
+                  >
+                    <div className="thumbnail-inner">
+                      <span style={{ opacity: 0.5 }}>Image</span>
+                    </div>
+                  </Link>
+                )}
+              </article>
+            );
+          })}
         </div>
       </section>
     </div>
