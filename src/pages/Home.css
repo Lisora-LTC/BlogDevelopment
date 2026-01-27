@@ -111,7 +111,7 @@
 .post-index {
   font-size: 4rem;
   font-weight: 700;
-  color: var(--bg-secondary); /* Subtle background number */
+  color: var(--text-secondary); /* Subtle outline/text color */
   line-height: 1;
 }
 

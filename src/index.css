@@ -22,7 +22,7 @@
 
 /* Content Container for Readability */
 .content-card {
-  background-color: rgba(255, 255, 255, 0.7); /* White semi-transparent */
+  background-color: transparent; /* Clean look for light mode */
   border-radius: 16px;
   padding: 40px;
   box-shadow:

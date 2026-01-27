@@ -32,10 +32,10 @@ function Header() {
               About
             </Link>
             <Link to="/" className="nav-link">
-              Cool Stuff
+              Projects
             </Link>
             <Link to="/" className="nav-link">
-              Designs
+              Blogs
             </Link>
           </nav>
         </div>

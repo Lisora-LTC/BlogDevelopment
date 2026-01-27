@@ -8,12 +8,14 @@
   top: 0;
   left: 0;
   pointer-events: none;
-  /* Updated to "Stage Light" Blue (Primary) with low opacity */
-  background: linear-gradient(
-    180deg,
-    rgba(59, 130, 246, 0.15) 0%,
-    rgba(59, 130, 246, 0) 100%
-  );
+  /* Layered Gradients: Blue Glow (Top) + White Fade (Bottom) */
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(59, 130, 246, 0.15) 0%,
+      rgba(59, 130, 246, 0) 100%
+    ),
+    linear-gradient(180deg, var(--bg-main) 0%, rgba(248, 250, 252, 0) 100%);
   transition: opacity 0.5s ease-in-out;
 }
 .menu-bg.visible {
@@ -37,7 +39,7 @@
   z-index: 1000;
 
   background: none;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #000;
 
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
