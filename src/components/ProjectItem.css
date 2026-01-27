@@ -1,0 +1,49 @@
+/* Project Item Styles */
+
+/* Remove border for last item in .content-list - This assumes CSS context, but safer to keep in Home or here if we know the structure. 
+   Actually, :last-child logic works best if this component is inside a parent. 
+   We will keep the generic rule in Home.css or ItemShared if possible, but let's put specifics here.
+*/
+
+.project-item {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  gap: 3rem;
+  align-items: flex-start;
+  padding-bottom: 2rem;
+  /* Darker Separator */
+  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+  color: inherit;
+  transition: transform 0.3s ease;
+}
+
+.item-meta {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+  font-family: monospace;
+  font-size: 0.9rem;
+  /* Darker Tags */
+  color: #374151; /* Darker Grey (Tailwind gray-700) */
+  font-weight: 600; /* Bolder */
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 1rem;
+}
+
+.project-thumbnail {
+  aspect-ratio: 4/3;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .project-item {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-thumbnail {
+    order: -1;
+    width: 100%;
+    aspect-ratio: 16/9;
+  }
+}

@@ -1,0 +1,61 @@
+/* Post Item Styles */
+
+.post-item {
+  display: grid;
+  /* Columns: Index | Title+Desc | Optional Image */
+  grid-template-columns: 80px 1fr auto;
+  gap: 3rem;
+  align-items: flex-start;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+  color: inherit;
+}
+
+/* Date Inline - Darker and Aligned */
+.item-date-inline {
+  font-family: monospace;
+  font-size: 0.95rem; /* Larger */
+  color: #4b5563; /* Darker Grey (Tailwind coolgray-600 approx) */
+  font-weight: 600; /* Bolder */
+  margin-left: 1.5rem;
+  vertical-align: middle;
+  opacity: 0.9; /* More visible */
+  display: inline-block;
+}
+
+.post-thumbnail {
+  width: 250px;
+  aspect-ratio: 4/3;
+}
+
+.post-item.no-image {
+  grid-template-columns: 80px 1fr;
+}
+.post-item.no-image .post-thumbnail {
+  display: none;
+}
+.post-item.no-image .item-info {
+  max-width: 800px;
+}
+.post-item.no-image .item-description {
+  max-width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .post-item {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .item-date-inline {
+    display: block;
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+
+  .post-thumbnail {
+    order: -1;
+    width: 100%;
+    aspect-ratio: 16/9;
+  }
+}
