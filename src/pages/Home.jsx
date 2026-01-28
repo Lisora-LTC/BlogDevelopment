@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { getAllPosts } from "../utils/postLoader";
 import { selectedProjects } from "../data/projects";
 import HeroSection from "../components/HeroSection";
@@ -18,7 +19,10 @@ function Home() {
 
       {/* Selected Projects Section */}
       <section className="section-container projects-section">
-        <h2 className="section-title">Recent Projects</h2>
+        <Link to="/projects" className="section-title-wrapper">
+          <h2 className="section-title">Recent Projects</h2>
+          <span className="view-all-arrow">View all projects &rarr;</span>
+        </Link>
         <div className="content-list">
           {selectedProjects.map((project, index) => (
             <ProjectItem key={project.id} project={project} index={index} />
@@ -30,7 +34,10 @@ function Home() {
 
       {/* Recent Blogs Section */}
       <section className="section-container posts-section">
-        <h2 className="section-title">Recent Blogs</h2>
+        <Link to="/blogs" className="section-title-wrapper">
+          <h2 className="section-title">Recent Blogs</h2>
+          <span className="view-all-arrow">View all blogs &rarr;</span>
+        </Link>
         <div className="content-list">
           {posts.map((post, index) => (
             <PostItem key={post.id} post={post} index={index} />

@@ -29,10 +29,11 @@
 }
 
 .section-title {
-  font-size: 2.5rem;
+  font-size: 4rem; /* Significantly larger */
   margin-bottom: 4rem;
-  font-weight: 300;
+  font-weight: 800; /* Extra Bold */
   display: inline-block;
+  letter-spacing: -2px; /* Tighter tracking for large text */
 }
 
 /* Unified Content Lists */
@@ -60,4 +61,87 @@
   .home-container {
     padding: 0 1.5rem;
   }
+}
+
+/* Interactive Section Titles */
+.section-title-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 4rem;
+  cursor: pointer;
+}
+
+.section-title-wrapper .section-title {
+  margin-bottom: 0;
+  display: inline-block;
+
+  /* Gradient Fill Animation Logic */
+  background-image: linear-gradient(90deg, #3b82f6, #2dd4bf);
+  background-size: 0% 100%; /* Initially 0 width */
+  background-repeat: no-repeat;
+  background-position: left center;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* When background-size is 0, color is inherited (black). 
+     When 100%, text becomes transparent revealing bg? 
+     No, usually we want:
+     Option A: Underline fill.
+     Option B: Text color fill.
+     
+     If we want Text Color Fill Animation:
+     We need color transparent initially? No, then it's invisible.
+     We need color Black initially, then Gradient.
+     
+     Standard trick:
+     background-image: linear-gradient(...), linear-gradient(black, black);
+     background-size: 0% 100%, 100% 100%;
+     
+     On hover:
+     background-size: 100% 100%, 100% 100%;
+     
+     And text-fill-color transparent.
+  */
+  background-image:
+    linear-gradient(90deg, #3b82f6, #2dd4bf),
+    linear-gradient(var(--text-main), var(--text-main));
+
+  background-size:
+    0% 100%,
+    100% 100%;
+
+  background-repeat: no-repeat;
+  background-position: left center;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  transition: background-size 0.5s ease;
+}
+
+.section-title-wrapper:hover .section-title {
+  background-size:
+    100% 100%,
+    100% 100%;
+}
+
+.view-all-arrow {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.section-title-wrapper:hover .view-all-arrow {
+  opacity: 1;
+  transform: translateX(0);
 }

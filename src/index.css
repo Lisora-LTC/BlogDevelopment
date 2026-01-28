@@ -95,3 +95,9 @@ code {
   font-family:
     source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+/* Global Fix for Fixed Header Overlay */
+.page-padding-fix {
+  padding-top: 140px !important; /* Force override of any component-level padding resets */
+  box-sizing: border-box;
+}

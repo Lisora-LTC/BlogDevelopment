@@ -16,8 +16,10 @@ function PostItem({ post, index }) {
           <Link to={`/post/${post.id}`} className="item-title-link">
             <span className="item-title">{post.title}</span>
           </Link>
-          {/* Inline Date */}
-          <span className="item-date-inline">{post.date}</span>
+          {/* Inline Date: formatted to dots */}
+          <span className="item-date-inline">
+            {post.date.replace(/-/g, ".")}
+          </span>
         </h2>
         <div className="item-description">
           {post.content.substring(0, 150)}...

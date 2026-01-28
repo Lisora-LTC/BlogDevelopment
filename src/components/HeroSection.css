@@ -40,15 +40,39 @@
 .blob-2 {
   width: 700px;
   height: 700px;
-  background: radial-gradient(
-    circle,
-    rgba(45, 212, 191, 0.5) 0%,
-    rgba(45, 212, 191, 0) 70%
+  /* 
+     Colors adapted to fit the Blue-Green theme (#3b82f6 -> #2dd4bf).
+     Using a mix of these colors and their variations.
+  */
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    #3b82f6 0deg,
+    /* Blue */ #60a5fa 60deg,
+    /* Lighter Blue */ #2dd4bf 120deg,
+    /* Teal */ #34d399 180deg,
+    /* Greenish Teal */ #2dd4bf 240deg,
+    /* Teal */ #60a5fa 300deg,
+    /* Lighter Blue */ #3b82f6 360deg /* Loop back to Blue */
   );
+
+  filter: blur(120px);
+  opacity: 0.6;
+  animation: move 30s linear infinite;
+  transform-origin: center center;
   bottom: -10%;
   right: 5%;
-  animation-delay: -5s;
-  animation-duration: 28s;
+}
+
+@keyframes move {
+  0% {
+    transform: rotate(0deg) scale(1.5); /* Start slightly zoomed in */
+  }
+  50% {
+    transform: rotate(180deg) scale(1.8); /* Breathing/Zoom effect */
+  }
+  100% {
+    transform: rotate(360deg) scale(1.5);
+  }
 }
 
 .blob-3 {
@@ -131,7 +155,9 @@
 }
 
 .hero-avatar:hover {
-  transform: translateY(-5px) scale(1.05);
+  /* Removed translateY to prevent layout shift */
+  /* transform: translateY(-5px) scale(1.05); */
+  transform: scale(1.05);
   box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
 }
 
@@ -278,7 +304,9 @@
 
 .featured-card:hover {
   border-radius: 40px;
-  transform: translateY(-8px) scale(1.02);
+  /* Removed translateY, kept scale and shadow */
+  /* transform: translateY(-8px) scale(1.02); */
+  transform: scale(1.02);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 

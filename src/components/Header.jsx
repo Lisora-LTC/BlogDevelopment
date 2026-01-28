@@ -31,10 +31,10 @@ function Header() {
             <Link to="/" className="nav-link">
               About
             </Link>
-            <Link to="/" className="nav-link">
+            <Link to="/projects" className="nav-link">
               Projects
             </Link>
-            <Link to="/" className="nav-link">
+            <Link to="/blogs" className="nav-link">
               Blogs
             </Link>
           </nav>

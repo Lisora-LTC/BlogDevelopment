@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { selectedProjects } from "../data/projects";
 import "./HeroSection.css";
 
@@ -15,15 +16,10 @@ function HeroSection() {
 
       <div className="hero-text">
         <div className="hero-avatar-wrapper">
-          <a
-            href="https://github.com/hrck9"
-            target="_blank"
-            rel="noreferrer"
-            className="hero-avatar"
-          >
+          <Link to="/about" className="hero-avatar">
             {/* Placeholder for Avatar */}
             <div className="avatar-placeholder">ME</div>
-          </a>
+          </Link>
         </div>
         <div className="hero-slogan">
           <em>Lisora</em>

@@ -12,7 +12,10 @@ function PostPage() {
   }
 
   return (
-    <div style={{ maxWidth: "800px", margin: "0 auto", paddingTop: "20px" }}>
+    <div
+      className="page-padding-fix"
+      style={{ maxWidth: "800px", margin: "0 auto" }}
+    >
       <Link
         to="/"
         style={{

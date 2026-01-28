@@ -13,7 +13,7 @@
 
 /* Date Inline - Darker and Aligned */
 .item-date-inline {
-  font-family: monospace;
+  font-family: "Courier New", Courier, monospace;
   font-size: 0.95rem; /* Larger */
   color: #4b5563; /* Darker Grey (Tailwind coolgray-600 approx) */
   font-weight: 600; /* Bolder */
