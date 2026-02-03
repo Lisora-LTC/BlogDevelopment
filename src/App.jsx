@@ -5,6 +5,7 @@ import Projects from "./pages/Projects";
 import Blogs from "./pages/Blogs";
 import About from "./pages/About";
 import PostPage from "./pages/PostPage";
+import ProjectPage from "./pages/ProjectPage";
 import Footer from "./components/Footer";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/about" element={<About />} />
             <Route path="/post/:id" element={<PostPage />} />
+            <Route path="/project/:id" element={<ProjectPage />} />
           </Routes>
         </main>
         <Footer />

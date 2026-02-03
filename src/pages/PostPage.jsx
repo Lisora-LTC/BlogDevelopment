@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { getAllPosts } from "../utils/postLoader";
 import ReactMarkdown from "react-markdown";
+import "../Markdown.css";
 
 function PostPage() {
   const { id } = useParams();
@@ -42,13 +43,7 @@ function PostPage() {
         >
           {post.date}
         </p>
-        <div
-          style={{
-            lineHeight: "1.8",
-            fontSize: "1.1rem",
-            color: "var(--text-main)",
-          }}
-        >
+        <div className="markdown-body">
           <ReactMarkdown>{post.content}</ReactMarkdown>
         </div>
       </article>

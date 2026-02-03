@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./ItemShared.css";
 import "./ProjectItem.css";
 
@@ -10,14 +11,9 @@ function ProjectItem({ project, index }) {
       {/* Info (Left) */}
       <div className="item-info">
         <h2 className="item-title-wrapper">
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noreferrer"
-            className="item-title-link"
-          >
+          <Link to={`/project/${project.id}`} className="item-title-link">
             <span className="item-title">{project.title}</span>
-          </a>
+          </Link>
         </h2>
         <div className="item-description">{project.description}</div>
         <div className="item-meta">
@@ -30,10 +26,8 @@ function ProjectItem({ project, index }) {
       </div>
 
       {/* Thumbnail (Right) */}
-      <a
-        href={project.link}
-        target="_blank"
-        rel="noreferrer"
+      <Link
+        to={`/project/${project.id}`}
         className="item-thumbnail project-thumbnail"
       >
         <div
@@ -44,9 +38,9 @@ function ProjectItem({ project, index }) {
               : `url(${project.image}) center/cover no-repeat`,
           }}
         >
-          <span className="view-hint">View</span>
+          <span className="view-hint">View Details</span>
         </div>
-      </a>
+      </Link>
     </div>
   );
 }
