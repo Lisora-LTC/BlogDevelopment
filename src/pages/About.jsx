@@ -47,9 +47,7 @@ function About() {
                 color: "var(--text-secondary)",
               }}
             >
-              Hello! I'm a passionate developer and creator. Welcome to my
-              digital garden where I share my projects and thoughts. (This is a
-              placeholder bio - feel free to customize it!)
+              哇我社恐了，还没想好要介绍什么，先这样吧。
             </p>
           </div>
         </div>

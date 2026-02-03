@@ -14,65 +14,77 @@ function HeroSection() {
         <div className="aurora-blob blob-3"></div>
       </div>
 
-      <div className="hero-text">
-        <div className="hero-avatar-wrapper">
-          <Link to="/about" className="hero-avatar">
-            {/* Placeholder for Avatar */}
-            <div className="avatar-placeholder">ME</div>
-          </Link>
+      <div className="hero-content-viewport">
+        <div className="hero-text">
+          <div className="hero-avatar-wrapper">
+            <Link to="/about" className="hero-avatar">
+              <img
+                src="/image/icon.png"
+                alt="Lisora"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </Link>
+          </div>
+          <div className="hero-slogan">
+            <em>Lisora</em>
+            <br />
+            做梦的地方
+            <span>何意味...</span>
+          </div>
         </div>
-        <div className="hero-slogan">
-          <em>Lisora</em>
-          <br />
-          做梦的地方
-          <span>何意味...</span>
-        </div>
-      </div>
 
-      <div className="hero-visual">
-        <div className="featured-label">LATEST PROJECT</div>
-        {/* Featured Card - Now Dynamic Link */}
-        <a
-          href={latestProject?.link || "#"}
-          target="_blank"
-          rel="noreferrer"
-          className="featured-card"
-        >
-          <div
-            className="featured-visual-inner"
-            style={{
-              width: "100%",
-              height: "100%",
-              background:
-                latestProject?.image ||
-                "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "#333",
-              fontWeight: "bold",
-            }}
+        <div className="hero-visual">
+          <div className="featured-label">LATEST PROJECT</div>
+          {/* Featured Card - Now Dynamic Link */}
+          <a
+            href={latestProject?.link || "#"}
+            target="_blank"
+            rel="noreferrer"
+            className="featured-card"
           >
-            <span
+            <div
+              className="featured-visual-inner"
               style={{
-                padding: "2rem",
-                textAlign: "center",
-                fontSize: "1.5rem",
-                opacity: 0.8,
+                width: "100%",
+                height: "100%",
+                background: latestProject?.image?.includes("gradient")
+                  ? latestProject.image
+                  : latestProject?.image
+                    ? `url(${latestProject.image}) center/cover no-repeat`
+                    : "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: latestProject?.image?.includes("gradient")
+                  ? "#333"
+                  : "#fff",
+                fontWeight: "bold",
+                textShadow: latestProject?.image?.includes("gradient")
+                  ? "none"
+                  : "0 2px 4px rgba(0,0,0,0.5)",
               }}
             >
-              {latestProject?.title || "Featured"}
-            </span>
-          </div>
-        </a>
-      </div>
-
-      {/* Scroll Down Indicator */}
-      <div className="scroll-indicator">
-        <div className="mouse-icon">
-          <div className="mouse-wheel"></div>
+              <span
+                style={{
+                  padding: "2rem",
+                  textAlign: "center",
+                  fontSize: "1.5rem",
+                  opacity: latestProject?.image?.includes("gradient") ? 0.8 : 1,
+                }}
+              >
+                {latestProject?.title || "Featured"}
+              </span>
+            </div>
+          </a>
         </div>
-        <div className="arrow-down"></div>
+
+        {/* Scroll Down Indicator */}
+        <div className="scroll-indicator">
+          <div className="mouse-icon">
+            <div className="mouse-wheel"></div>
+          </div>
+          <div className="arrow-down"></div>
+        </div>
       </div>
     </section>
   );

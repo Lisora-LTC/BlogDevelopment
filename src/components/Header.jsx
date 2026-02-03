@@ -28,7 +28,7 @@ function Header() {
 
           {/* Navigation */}
           <nav className="nav">
-            <Link to="/" className="nav-link">
+            <Link to="/about" className="nav-link">
               About
             </Link>
             <Link to="/projects" className="nav-link">

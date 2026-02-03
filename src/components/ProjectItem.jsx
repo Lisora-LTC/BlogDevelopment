@@ -36,7 +36,14 @@ function ProjectItem({ project, index }) {
         rel="noreferrer"
         className="item-thumbnail project-thumbnail"
       >
-        <div className="thumbnail-inner" style={{ background: project.image }}>
+        <div
+          className="thumbnail-inner"
+          style={{
+            background: project.image.includes("gradient")
+              ? project.image
+              : `url(${project.image}) center/cover no-repeat`,
+          }}
+        >
           <span className="view-hint">View</span>
         </div>
       </a>
