@@ -163,20 +163,36 @@
     100% 100%;
 }
 
-/* GitHub Link (SVG) */
-.github-link {
+/* Right Container Layout */
+.header-right {
   display: flex;
   align-items: center;
-  background: none;
-  -webkit-text-fill-color: initial;
+  gap: 1.5rem; /* Space between icons */
+}
+
+/* Universal Icon Link Class */
+.icon-link {
+  display: flex !important; /* Force flex to override generic nav-link if needed */
+  align-items: center;
+
+  /* Reset Text Gradient for SVGs */
+  background: none !important;
+  -webkit-text-fill-color: initial !important;
   color: var(--text-secondary);
+
   transition: color 0.3s ease;
 }
 
-.github-link:hover {
+.icon-link:hover {
   color: var(--text-main);
   filter: none;
+
+  /* Ensure background size doesn't animate since we don't have the gradient bg */
+  background-size: initial !important;
 }
+
+/* Ensure the underline works for icons too */
+/* Inherits from .nav-link automatically */
 
 /* Underline Animation for Nav Links */
 .nav-link::after {

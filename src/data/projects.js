@@ -1,6 +1,28 @@
 export const selectedProjects = [
   {
     id: 1,
+    title: "基于mediapipe的手势识别",
+    description: "New project description...",
+    image: "/image/gesture.png",
+    link: "https://github.com/yourusername/project",
+    tags: ["Tag1", "Tag2"],
+    content: `
+# New Project Title
+
+**New Project** description.
+
+## Key Features
+- **Feature 1**: Description.
+- **Feature 2**: Description.
+
+## Technical Details
+Built with...
+
+![Screenshot](/image/placeholder.png)
+    `,
+  },
+  {
+    id: 2,
     title: "Project Alpha",
     description: "A revolutionary tool for managing workflows efficiently.",
     image: "/image/simulated_annealing_coverage.png", // Updated to real image
@@ -24,7 +46,7 @@ Check out the source code [here](https://github.com/hrck9/ProjectAlpha).
     `,
   },
   {
-    id: 2,
+    id: 3,
     title: "Neon Vibes",
     description: "A cyberpunk-inspired UI kit for modern web applications.",
     image: "/image/snake.png",
@@ -50,7 +72,7 @@ Simply import the CSS file and start using the classes.
     `,
   },
   {
-    id: 3,
+    id: 4,
     title: "Data Viz 3000",
     description: "Visualizing complex datasets with ease and beauty.",
     image: "/image/PegSolitare.png",

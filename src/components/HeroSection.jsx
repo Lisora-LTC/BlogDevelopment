@@ -36,12 +36,7 @@ function HeroSection() {
         <div className="hero-visual">
           <div className="featured-label">LATEST PROJECT</div>
           {/* Featured Card - Now Dynamic Link */}
-          <a
-            href={latestProject?.link || "#"}
-            target="_blank"
-            rel="noreferrer"
-            className="featured-card"
-          >
+          <Link to={`/project/${latestProject?.id}`} className="featured-card">
             <div
               className="featured-visual-inner"
               style={{
@@ -75,7 +70,7 @@ function HeroSection() {
                 {latestProject?.title || "Featured"}
               </span>
             </div>
-          </a>
+          </Link>
         </div>
 
         {/* Scroll Down Indicator */}

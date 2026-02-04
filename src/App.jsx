@@ -6,6 +6,7 @@ import Blogs from "./pages/Blogs";
 import About from "./pages/About";
 import PostPage from "./pages/PostPage";
 import ProjectPage from "./pages/ProjectPage";
+import NotFound from "./pages/NotFound";
 import Footer from "./components/Footer";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/post/:id" element={<PostPage />} />
             <Route path="/project/:id" element={<ProjectPage />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
